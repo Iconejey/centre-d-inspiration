@@ -9,10 +9,18 @@ body {
 }
 
 body {
+	/* Colors */
+	--grey-1: #f8f8f8;
+	--grey-2: #ededf0;
+	--grey-3: #dedee3;
+	--grey-9: #232349;
+	--primary: #5255e2;
+
 	min-height: 100%;
 	display: flex;
 	flex-direction: column;
 	font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+	background-color: var(--grey-1);
 }
 
 * {
