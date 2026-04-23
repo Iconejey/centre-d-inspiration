@@ -1,4 +1,50 @@
 .sidebar {
 	flex: 0.3;
-	background-color: lightgreen;
+	border: 1px solid var(--grey-3);
+	border-radius: 0.5rem;
+	margin: 0.9em;
+	padding: 1.1em 0.9em;
+	font-size: 14px;
+	height: fit-content;
+
+	label,
+	select {
+		display: block;
+	}
+
+	label {
+		margin-bottom: 0.5em;
+	}
+
+	select {
+		margin-bottom: 2em;
+		width: 100%;
+		padding: 0.9em;
+	}
+
+	.card {
+		background: linear-gradient(135deg, #5255e2, #232349);
+		color: white;
+		border-radius: 0.5em;
+		display: flex;
+		padding: 0 1em;
+		gap: 1em;
+
+		& .content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 1.5em;
+
+			& .text {
+				font-size: 16px;
+				display: flex;
+				flex-direction: column;
+
+				& .title {
+					font-weight: 600;
+				}
+			}
+		}
+	}
 }
