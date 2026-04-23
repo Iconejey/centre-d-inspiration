@@ -13,6 +13,8 @@ body {
 	--grey-1: #f8f8f8;
 	--grey-2: #ededf0;
 	--grey-3: #dedee3;
+	--grey-6: #6f6f85;
+	--grey-7: #5a5a76;
 	--grey-9: #232349;
 	--primary: #5255e2;
 
@@ -41,8 +43,24 @@ button {
 	width: fit-content;
 	background-color: var(--primary);
 	color: white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	gap: 0.5rem;
 
 	&.large {
 		padding: 0.75rem 1rem;
+	}
+
+	&.outlined {
+		background-color: transparent;
+		border: 1px solid var(--grey-7);
+		color: var(--grey-7);
+
+		&:hover {
+			background-color: var(--grey-7);
+			color: white;
+		}
 	}
 }
