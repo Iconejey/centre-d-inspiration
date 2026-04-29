@@ -1,29 +1,13 @@
 import Image from 'next/image';
 import { mechanics } from '../mechanics.js';
 
-function getMechanicData(template_id) {
-	if (!template_id) {
-		return {
-			label: 'Mecanique non renseignee',
-			icon: null
-		};
-	}
-
-	return (
-		mechanics[template_id] || {
-			label: `Template ${template_id}`,
-			icon: null
-		}
-	);
-}
-
 export default function ContestCard({ contest_item }) {
 	const title = contest_item?.title || 'Titre indisponible';
 	const description = contest_item?.description || 'Description indisponible';
 	const showcase_image = contest_item?.showcase_image || '/assets/test-img.png';
-	const mechanic_data = getMechanicData(contest_item?.template);
-	const MechanicIcon = mechanic_data.icon;
-	const mechanic_label = mechanic_data.label;
+	const mechanic_data = mechanics[contest_item?.template];
+	const MechanicIcon = mechanic_data.icon || null;
+	const mechanic_label = mechanic_data.label || 'Mécanique inconnue';
 	const has_link = Boolean(contest_item?.content_link);
 
 	return (
@@ -38,12 +22,10 @@ export default function ContestCard({ contest_item }) {
 					{MechanicIcon ? <MechanicIcon width={18} height={18} aria-label={`Icone ${mechanic_label}`} /> : <Image src="/assets/mechanic-test-icon.svg" alt="Icone de la mécanique" width={18} height={18} />}
 					<span className="label">{mechanic_label}</span>
 				</div>
-				{has_link ? (
+				{has_link && (
 					<a href={contest_item.content_link} target="_blank" rel="noreferrer" className="card-action">
 						Voir le jeu
 					</a>
-				) : (
-					<button disabled>Lien indisponible</button>
 				)}
 			</div>
 		</div>
