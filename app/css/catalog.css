@@ -42,12 +42,35 @@
 					font-weight: 600;
 				}
 
+				& .description {
+					color: var(--grey-7);
+					font-size: 0.9rem;
+				}
+
 				& .mechanic {
 					display: flex;
 					align-items: center;
 					gap: 0.5rem;
 				}
+
+				& .card-action {
+					border-radius: 1px;
+					padding: 0.5rem 1.5rem;
+					width: fit-content;
+					background-color: var(--primary);
+					color: white;
+					text-decoration: none;
+				}
 			}
+		}
+
+		& .empty-state {
+			width: 100%;
+			padding: 1.25rem;
+			border: 1px dashed var(--grey-6);
+			border-radius: 0.25rem;
+			color: var(--grey-7);
+			background-color: #fff;
 		}
 	}
 }
