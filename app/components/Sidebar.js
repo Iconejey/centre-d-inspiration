@@ -3,28 +3,37 @@
 import '../css/sidebar.css';
 import ContactCard from './ContactCard';
 
-export default function Sidebar() {
+export default function Sidebar({ filter_options, filter_state, onFilterChange, onResetFilters }) {
+	const filters = [
+		{ key: 'template', label: 'Mécanique' },
+		{ key: 'marketing_goal', label: 'Objectifs marketing' },
+		{ key: 'year_highlight', label: 'Temps forts' },
+		{ key: 'activity_area', label: 'Secteur d’activité' }
+	];
+
 	return (
 		<aside className="sidebar">
-			<label htmlFor="mechanic">Mécanique</label>
-			<select name="mechanic" id="mechanic">
-				<option value="">Sélectionner</option>
-			</select>
+			<div className="sidebar-filters">
+				{filters.map(({ key, label }) => (
+					<div key={key}>
+						<label htmlFor={key}>{label}</label>
+						<select name={key} id={key} value={filter_state[key]} onChange={event => onFilterChange(key, event.target.value)}>
+							<option value="">Tout</option>
+							{filter_options?.[key]?.map(({ id, label }) => (
+								<option key={`${key}-${id}`} value={id}>
+									{label.replace(' -', '')}
+								</option>
+							))}
+						</select>
+					</div>
+				))}
 
-			<label htmlFor="objectifs">Objectifs marketing</label>
-			<select name="objectifs" id="objectifs">
-				<option value="">Sélectionner</option>
-			</select>
-
-			<label htmlFor="temps-forts">Temps forts</label>
-			<select name="temps-forts" id="temps-forts">
-				<option value="">Sélectionner</option>
-			</select>
-
-			<label htmlFor="secteur">Secteur d&apos;activité</label>
-			<select name="secteur" id="secteur">
-				<option value="">Sélectionner</option>
-			</select>
+				<div className="actions">
+					<button type="button" onClick={() => onResetFilters?.()} className="outlined-link">
+						Reinitialiser
+					</button>
+				</div>
+			</div>
 
 			<ContactCard />
 		</aside>
