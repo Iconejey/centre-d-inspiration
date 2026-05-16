@@ -3,6 +3,13 @@ import { template_icons } from '../template_icons.js';
 const inspiration_center_list_url = process.env.NEXT_PUBLIC_INSPIRATION_CENTER_URL + '/list';
 const inspiration_center_option_url = process.env.NEXT_PUBLIC_INSPIRATION_CENTER_URL + '/option';
 
+export const FILTERS = [
+	{ key: 'template', label: 'Mécanique' },
+	{ key: 'marketing_goal', label: 'Objectifs marketing' },
+	{ key: 'year_highlight', label: 'Temps forts' },
+	{ key: 'activity_area', label: 'Secteur d’activité' }
+];
+
 async function fetchData(url, data_name, default_value) {
 	try {
 		const response = await fetch(url, { next: { revalidate: 300 } });
@@ -53,13 +60,11 @@ export async function getContestsAndOptions() {
 }
 
 export function filterContests(contests, filter_state) {
-	const filter_keys = ['template', 'marketing_goal', 'year_highlight', 'activity_area'];
-
 	return contests.filter(contest => {
 		// Filters
-		const matches_filters = filter_keys.every(filter_key => {
-			if (!filter_state[filter_key]) return true;
-			return String(contest[filter_key]) === filter_state[filter_key];
+		const matches_filters = FILTERS.every(({ key }) => {
+			if (!filter_state[key]) return true;
+			return String(contest[key]) === filter_state[key];
 		});
 
 		// Search

@@ -4,14 +4,12 @@ import { useState, useEffect } from 'react';
 import Catalog from './components/Catalog';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { getContestsAndOptions, filterContests } from './lib/inspiration';
+import { getContestsAndOptions, filterContests, FILTERS } from './lib/inspiration';
 
-const initial_filter_state = {
-	search: '',
-	template: '',
-	marketing_goal: '',
-	year_highlight: '',
-	activity_area: ''
+const getInitialFilterState = () => {
+	const obj = { search: '' };
+	FILTERS.forEach(({ key }) => (obj[key] = ''));
+	return obj;
 };
 
 export default function Home() {
@@ -24,10 +22,8 @@ export default function Home() {
 	}, []);
 
 	// Filtering
-	const [filter_state, setFilterState] = useState(initial_filter_state);
+	const [filter_state, setFilterState] = useState(getInitialFilterState());
 	const filtered_contests = filterContests(contests, filter_state);
-
-	console.log(filter_state);
 
 	function handleFilterChange(filter_name, filter_value) {
 		setFilterState(current_filter_state => ({
@@ -37,7 +33,7 @@ export default function Home() {
 	}
 
 	function handleResetFilters() {
-		setFilterState(initial_filter_state);
+		setFilterState(getInitialFilterState());
 	}
 
 	return (
