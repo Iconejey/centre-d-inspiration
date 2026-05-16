@@ -31,6 +31,7 @@ export async function getContestsAndOptions() {
 	const options_res = await fetchData(inspiration_center_option_url, 'option_data', null);
 	const options = options_res.option_data;
 
+	// Simplify and enhance contests data
 	const contests_res = await fetchData(inspiration_center_list_url, 'contests', []);
 	const contests = contests_res.contests.map(old => {
 		const new_contest = {
@@ -55,6 +56,14 @@ export async function getContestsAndOptions() {
 
 		return new_contest;
 	});
+
+	// Remove dashes in options labels and mark disabled options
+	for (const { key } of FILTERS) {
+		for (const option of options[key]) {
+			option.label = option.label.replace(' -', '');
+			option.disabled = !contests.some(contest => String(contest[key]) === String(option.id));
+		}
+	}
 
 	return { contests, options, has_error: contests_res.has_error || options_res.has_error };
 }

@@ -13,9 +13,9 @@ export default function Sidebar({ filter_options, filter_state, onFilterChange, 
 						<label htmlFor={key}>{label}</label>
 						<select name={key} id={key} value={filter_state[key]} onChange={event => onFilterChange(key, event.target.value)}>
 							<option value="">Tout</option>
-							{filter_options?.[key]?.map(({ id, label }) => (
-								<option key={`${key}-${id}`} value={id}>
-									{label.replace(' -', '')}
+							{filter_options?.[key]?.map(({ id, label, disabled }) => (
+								<option key={`${key}-${id}`} value={id} disabled={disabled}>
+									{label}
 								</option>
 							))}
 						</select>
