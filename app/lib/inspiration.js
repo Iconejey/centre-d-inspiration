@@ -40,7 +40,7 @@ export async function getContestsAndOptions() {
 			image: old.showcase_image,
 			template_name: options?.template.find(({ id }) => id === old.template)?.label || old.template,
 			Icon: template_icons[old.template],
-			link: `https://kx1.co/contest-${old.hash_id}`,
+			link: process.env.NEXT_PUBLIC_CONTEST_URL + old.hash_id,
 
 			size: {
 				desktop: { width: old.width_desktop, height: old.height_desktop },
