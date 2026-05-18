@@ -59,7 +59,9 @@
 					width: fit-content;
 					background-color: var(--primary);
 					color: white;
-					text-decoration: none;
+					font-family: inherit;
+					font-size: 1rem;
+					cursor: pointer;
 				}
 			}
 		}

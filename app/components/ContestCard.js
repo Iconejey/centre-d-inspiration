@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function ContestCard({ contest }) {
+export default function ContestCard({ contest, onOpenContest }) {
 	const Icon = contest?.Icon || null;
 
 	return (
@@ -13,9 +13,9 @@ export default function ContestCard({ contest }) {
 					<Icon width={18} height={18} aria-label={`Icone ${contest.template_name}`} />
 					<span className="label">{contest.template_name}</span>
 				</div>
-				<a href={contest.link} target="_blank" rel="noreferrer" className="card-action">
+				<button className="card-action" onClick={() => onOpenContest(contest)}>
 					Voir le jeu
-				</a>
+				</button>
 			</div>
 		</div>
 	);
