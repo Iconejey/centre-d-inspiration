@@ -1,6 +1,8 @@
 .catalog {
 	flex: 0.7;
 	padding-right: 1rem;
+	overflow-y: auto;
+	min-height: 0;
 
 	& .filters {
 		display: flex;

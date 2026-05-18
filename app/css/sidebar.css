@@ -6,6 +6,8 @@
 	padding: 1.1em 0.9em;
 	font-size: 14px;
 	height: fit-content;
+	position: sticky;
+	top: 0.9em;
 
 	label,
 	select {
