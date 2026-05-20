@@ -78,3 +78,16 @@
 		}
 	}
 }
+
+/* Responsive columns */
+@media (max-width: 1400px) {
+	.catalog .cards {
+		--columns: 2;
+	}
+}
+
+@media (max-width: 900px) {
+	.catalog .cards {
+		--columns: 1;
+	}
+}
