@@ -26,6 +26,7 @@ export default function Home() {
 	const [filter_state, setFilterState] = useState(getInitialFilterState());
 	const filtered_contests = filterContests(contests, filter_state);
 	const [popup_state, setPopupState] = useState({ is_open: false, contest: null });
+	const [sidebar_open, setSidebarOpen] = useState(false);
 
 	function handleFilterChange(filter_name, filter_value) {
 		setFilterState(current_filter_state => ({
@@ -54,8 +55,8 @@ export default function Home() {
 		<>
 			<Header search_value={filter_state.search_value} handleFilterChange={handleFilterChange} />
 			<main>
-				<Sidebar filter_options={options} filter_state={filter_state} onFilterChange={handleFilterChange} onResetFilters={handleResetFilters} />
-				<Catalog contests={filtered_contests} has_error={has_error} onOpenContest={handleOpenContest} />
+				<Sidebar filter_options={options} filter_state={filter_state} onFilterChange={handleFilterChange} onResetFilters={handleResetFilters} isOpen={sidebar_open} onClose={() => setSidebarOpen(false)} />
+				<Catalog contests={filtered_contests} has_error={has_error} onOpenContest={handleOpenContest} onOpenFilters={() => setSidebarOpen(true)} />
 			</main>
 
 			{popup_state.is_open && popup_contest && (

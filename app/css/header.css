@@ -46,3 +46,26 @@
 		}
 	}
 }
+
+@media (max-width: 600px) {
+	.site-header {
+		padding: 1.5em;
+		flex-direction: column;
+		gap: 1rem;
+
+		& .title {
+			font-size: 1.2em;
+			order: 1;
+		}
+
+		& .search-bar {
+			width: 100%;
+			max-width: 100%;
+			order: 2;
+		}
+
+		& .bg-k {
+			opacity: 0.1;
+		}
+	}
+}

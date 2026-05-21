@@ -13,7 +13,9 @@ export default function ContactCard() {
 					<span className="title">Vous avez un projet de jeu marketing</span>
 					<span className="subtitle">vous souhaitez être accompagné par nos équipes ?</span>
 				</div>
-				<button className="large button">Prendre rendez-vous</button>
+				<button className="large button" onClick={() => window.open('https://www.kimpleapp.com/contact', '_blank')}>
+					Prendre rendez-vous
+				</button>
 			</div>
 			<div className="lottie">
 				<Lottie animationData={kbotAnimation} loop={true} />

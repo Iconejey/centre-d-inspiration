@@ -6,8 +6,18 @@
 
 	& .filters {
 		display: flex;
-		justify-content: end;
+		justify-content: space-between;
+		align-items: center;
 		padding: 1.2rem 0 0.9rem 0;
+		gap: 1rem;
+
+		& .filter-button {
+			display: none;
+		}
+
+		& .sort-button {
+			margin-left: auto;
+		}
 	}
 
 	& .cards {
@@ -79,7 +89,6 @@
 	}
 }
 
-/* Responsive columns */
 @media (max-width: 1400px) {
 	.catalog .cards {
 		--columns: 2;
@@ -89,5 +98,28 @@
 @media (max-width: 900px) {
 	.catalog .cards {
 		--columns: 1;
+	}
+}
+
+@media (max-width: 600px) {
+	.catalog {
+		flex: 1;
+		padding: 0 1rem;
+
+		& .filters {
+			justify-content: flex-start;
+
+			& .filter-button {
+				display: flex;
+			}
+
+			& .sort-button {
+				margin-left: auto;
+			}
+		}
+
+		& .mobile-filter-actions {
+			display: flex;
+		}
 	}
 }

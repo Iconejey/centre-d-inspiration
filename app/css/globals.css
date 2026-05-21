@@ -36,6 +36,7 @@ main {
 	flex: 1;
 	display: flex;
 	min-height: 0;
+	position: relative;
 }
 
 button {
@@ -64,5 +65,15 @@ button {
 			background-color: var(--grey-7);
 			color: white;
 		}
+	}
+}
+
+@media (max-width: 600px) {
+	body {
+		height: 100vh;
+	}
+
+	main {
+		position: relative;
 	}
 }

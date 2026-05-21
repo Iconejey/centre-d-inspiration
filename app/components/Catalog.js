@@ -1,14 +1,19 @@
 import '../css/catalog.css';
 import ContestCard from './ContestCard';
-import Image from 'next/image';
+import FilterIcon from './FilterIcon';
+import FunnelFillIcon from './FunnelFillIcon';
 
-export default function Catalog({ contests = [], has_error = false, onOpenContest }) {
+export default function Catalog({ contests = [], has_error = false, onOpenContest, onOpenFilters }) {
 	return (
 		<section className="catalog">
 			<div className="filters">
-				<button className="outlined">
+				<button className="outlined filter-button" onClick={onOpenFilters}>
+					<FunnelFillIcon />
+					Filtrer
+				</button>
+				<button className="outlined sort-button">
 					Trier par
-					<Image src="/assets/filter.svg" alt="Icone de filtre" width={16} height={16} />
+					<FilterIcon />
 				</button>
 			</div>
 			<div className="cards">
