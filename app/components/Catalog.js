@@ -1,9 +1,8 @@
 import '../css/catalog.css';
 import ContestCard from './ContestCard';
-import FilterIcon from './FilterIcon';
 import FunnelFillIcon from './FunnelFillIcon';
 
-export default function Catalog({ contests = [], has_error = false, onOpenContest, onOpenFilters }) {
+export default function Catalog({ contests = [], has_error = false, sort_by, onSortChange, onOpenContest, onOpenFilters }) {
 	return (
 		<section className="catalog">
 			<div className="filters">
@@ -11,10 +10,16 @@ export default function Catalog({ contests = [], has_error = false, onOpenContes
 					<FunnelFillIcon />
 					Filtrer
 				</button>
-				<button className="outlined sort-button">
-					Trier par
-					<FilterIcon />
-				</button>
+				<select 
+					className="outlined sort-button"
+					value={sort_by}
+					onChange={e => onSortChange(e.target.value)}
+				>
+					<option value="" disabled hidden>Trier par</option>
+					<option value="recent">Plus récent</option>
+					<option value="ancien">Plus ancien</option>
+					<option value="mecanique">Par mécanique</option>
+				</select>
 			</div>
 			<div className="cards">
 				{contests.map(contest_item => (

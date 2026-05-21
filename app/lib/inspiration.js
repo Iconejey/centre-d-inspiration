@@ -49,6 +49,7 @@ export async function getContestsAndOptions() {
 			},
 
 			template: old.template,
+			published_at: old.published_at,
 			activity_area: old.activity_area,
 			marketing_goal: getMetaValue(old, 'marketing_goal'),
 			year_highlight: getMetaValue(old, 'year_highlight')

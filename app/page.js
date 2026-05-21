@@ -24,7 +24,17 @@ export default function Home() {
 
 	// Filtering
 	const [filter_state, setFilterState] = useState(getInitialFilterState());
+	const [sort_by, setSortBy] = useState('');
+
 	const filtered_contests = filterContests(contests, filter_state);
+	const sorted_contests = [...filtered_contests].sort((a, b) => {
+		if (sort_by === 'recent') return new Date(b.published_at) - new Date(a.published_at);
+		else if (sort_by === 'ancien') return new Date(a.published_at) - new Date(b.published_at);
+		else if (sort_by === 'mecanique') return (a.template_name || '').localeCompare(b.template_name || '');
+
+		return 0;
+	});
+
 	const [popup_state, setPopupState] = useState({ is_open: false, contest: null });
 	const [sidebar_open, setSidebarOpen] = useState(false);
 
@@ -56,7 +66,7 @@ export default function Home() {
 			<Header search_value={filter_state.search_value} handleFilterChange={handleFilterChange} />
 			<main>
 				<Sidebar filter_options={options} filter_state={filter_state} onFilterChange={handleFilterChange} onResetFilters={handleResetFilters} isOpen={sidebar_open} onClose={() => setSidebarOpen(false)} />
-				<Catalog contests={filtered_contests} has_error={has_error} onOpenContest={handleOpenContest} onOpenFilters={() => setSidebarOpen(true)} />
+				<Catalog contests={sorted_contests} has_error={has_error} sort_by={sort_by} onSortChange={setSortBy} onOpenContest={handleOpenContest} onOpenFilters={() => setSidebarOpen(true)} />
 			</main>
 
 			{popup_state.is_open && popup_contest && (
