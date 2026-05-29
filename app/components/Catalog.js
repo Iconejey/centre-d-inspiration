@@ -10,12 +10,10 @@ export default function Catalog({ contests = [], has_error = false, sort_by, onS
 					<FunnelFillIcon />
 					Filtrer
 				</button>
-				<select 
-					className="outlined sort-button"
-					value={sort_by}
-					onChange={e => onSortChange(e.target.value)}
-				>
-					<option value="" disabled hidden>Trier par</option>
+				<select className="outlined sort-button" value={sort_by} onChange={e => onSortChange(e.target.value)} aria-label="Trier par">
+					<option value="" disabled hidden>
+						Trier par
+					</option>
 					<option value="recent">Plus récent</option>
 					<option value="ancien">Plus ancien</option>
 					<option value="mecanique">Par mécanique</option>
