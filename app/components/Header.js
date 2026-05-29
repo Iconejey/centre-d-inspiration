@@ -25,7 +25,7 @@ export default function Header({ search_value = '', handleFilterChange }) {
 				<Image src="/assets/K.svg" alt="Logo Kimple court" fill priority />
 			</div>
 			<div className="title">
-				<span>Le centre d&apos;inspiration</span>
+				<h1>Le centre d&apos;inspiration</h1>
 				<Image src="/assets/KimpleLogoFull.svg" alt="Logo kimple long" width={100} height={34} priority />
 			</div>
 			<div className="search-bar">

@@ -20,6 +20,11 @@
 		align-items: center;
 		font-size: 1.5em;
 		gap: 0.5em;
+
+		& h1 {
+			font-size: inherit;
+			font-weight: normal;
+		}
 	}
 
 	& .search-bar {
